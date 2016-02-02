@@ -1,2 +1,5 @@
 source "http://rubygems.org"
-gemspec
+gem "janky", "~>0.9"
+gem "pg"
+gem "thin"
+gem "hipchat", "~>0.4"
