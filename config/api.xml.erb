@@ -33,7 +33,7 @@
       <maxConcurrentPerNode>0</maxConcurrentPerNode>
       <maxConcurrentTotal>0</maxConcurrentTotal>
       <categories>
-        <string>unit-test-cms</string>
+        <string>unit-test-api</string>
         <string>false</string>
       </categories>
       <throttleEnabled>true</throttleEnabled>
@@ -66,7 +66,7 @@ if [ ! -d &quot;./.git&quot; ]; then
 fi
 git fetch -q origin
 git reset -q --hard $JANKY_SHA1
-/home/master/bin/run_tests.sh cms 'rake spec_without_requests'
+/home/master/bin/run_tests.sh api 'rspec'
 </command>
     </hudson.tasks.Shell>
   </builders>

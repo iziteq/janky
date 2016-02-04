@@ -26,7 +26,7 @@ module Janky
         repo   = build.repo_nwo
         path  = "repos/#{repo}/statuses/#{build.sha1}"
 
-        post(path, "pending", build.web_url, "Build ##{build.number} queued", context(build))
+        post(path, "pending", build.jenkins_web_url, "Build queued", context(build))
       end
 
       # Create a Pending Status for the Commit when it starts.
@@ -34,7 +34,7 @@ module Janky
         repo   = build.repo_nwo
         path  = "repos/#{repo}/statuses/#{build.sha1}"
 
-        post(path, "pending", build.web_url, "Build ##{build.number} started", context(build))
+        post(path, "pending", build.jenkins_web_url, "Build started", context(build))
       end
 
       # Create a Success or Failure Status for the Commit.
@@ -44,11 +44,11 @@ module Janky
         status = build.green? ? "success" : "failure"
 
         desc = case status
-          when "success" then "Build ##{build.number} succeeded in #{build.duration}s"
-          when "failure" then "Build ##{build.number} failed in #{build.duration}s"
+          when "success" then "Build succeeded in #{build.duration}s"
+          when "failure" then "Build failed in #{build.duration}s"
         end
 
-        post(path, status, build.web_url, desc, context(build))
+        post(path, status, build.jenkins_web_url, desc, context(build))
       end
 
       # Internal: POST the new status to the API

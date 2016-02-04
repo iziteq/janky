@@ -1,3 +1,5 @@
+require 'uri'
+
 module Janky
   class Build < ActiveRecord::Base
     belongs_to :branch
@@ -233,6 +235,15 @@ module Janky
     def web_url
       return if new_record?
       self.class.base_url + "#{id}/output"
+    end
+
+    def jenkins_web_url
+      return if new_record?
+      begin
+        return URI::join('https://ops.izi.travel', URI(url).path, 'console').to_s
+      rescue 
+        return 'https://ops.izi.travel'
+      end
     end
 
     # URL of the web page for this build's branch, served by Janky::App.

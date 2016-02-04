@@ -33,7 +33,7 @@ module Janky
         })
 
         exception_context(config, name, uri)
-
+:!
         if !@adapter.exists?(@server_url, name)
           @adapter.run(@server_url, name, config)
           true

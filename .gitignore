@@ -5,3 +5,4 @@ vendor/gems
 .ruby-version
 vendor/bundle
 tags
+*.sw[a-z]
